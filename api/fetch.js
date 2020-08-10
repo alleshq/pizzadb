@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
   // Get all record data
   const recordData = await db.Data.findAll({
     where: {
-      base: kv.base,
+      base: base.id,
       record: kv.record
     },
     order: ['key']
