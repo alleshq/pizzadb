@@ -11,6 +11,7 @@ db.sync().then(() => app.listen(8080, () => console.log('Server is listening...'
 // API
 app.put('/:base', require('./api/create'))
 app.get('/:base/:key/:value', require('./api/fetch'))
+app.delete('/:base/:key/:value', require('./api/delete'))
 
 // 404
 app.use((_req, res) => res.status(404).json({ err: 'notFound' }))
