@@ -10,7 +10,7 @@ db.sync().then(() => app.listen(8080, () => console.log('Server is listening...'
 
 // API
 app.put('/:base', require('./api/create'))
-app.get('/:base/:key/:value', require('./api/fetch'))
+app.get('/:base/:key/:value', require('./api/read'))
 app.patch('/:base/:key/:value', require('./api/update'))
 app.delete('/:base/:key/:value', require('./api/delete'))
 
