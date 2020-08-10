@@ -1,4 +1,5 @@
 const db = require('../db')
+const getRecord = require('../getRecord')
 
 module.exports = async (req, res) => {
   // Get base
@@ -20,19 +21,6 @@ module.exports = async (req, res) => {
   })
   if (!kv) return res.status(404).json({ err: 'notFound' })
 
-  // Get all record data
-  const recordData = await db.Data.findAll({
-    where: {
-      base: kv.base,
-      record: kv.record
-    },
-    order: ['key']
-  })
-
-  // Record output
-  const record = {}
-  recordData.forEach(kv => { record[kv.key] = kv.value })
-
   // Response
-  res.json(record)
+  res.json(await getRecord(base.id, kv.record))
 }
