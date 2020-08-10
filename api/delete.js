@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     }
   })
   if (!base) return res.status(404).json({ err: 'notFound' })
-  if (!base.public && base.secret !== req.headers.authorization) return res.status(401).json({ err: 'badAuthorization' })
+  if (base.secret !== req.headers.authorization) return res.status(401).json({ err: 'badAuthorization' })
 
   // Get key/value record
   const kv = await db.Data.findOne({
