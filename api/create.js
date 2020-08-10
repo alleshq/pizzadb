@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     }
   })
   if (!base) return res.status(404).json({ err: 'missingResource' })
-  if (base.secret !== req.headers.authorization) return res.status(401).json({ err: 'badAuthentication' })
+  if (base.secret !== req.headers.authorization) return res.status(401).json({ err: 'badAuthorization' })
 
   // Check body
   for (let i = 0; i < Object.keys(req.body).length; i++) {
